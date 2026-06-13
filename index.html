@@ -3,249 +3,313 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polina Dadasheva — Product Designer</title>
+  <title>polina dadasheva</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Ubuntu+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --red:   #9E1C1C;
+      --muted: #999;
+      --rule:  #E5E5E2;
+      --ink:   #131313;
+      --bg:    #FAFAF8;
+      --fd: 'Ubuntu', serif;
+      --fb: 'Ubuntu Sans', sans-serif;
+    }
+
+    html { background: var(--bg); color: var(--ink); }
+    body {
+      font-family: var(--fb);
+      font-weight: 300;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
     a { color: inherit; text-decoration: none; }
 
+    /* ── NAV ── */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 32px 64px;
-      border-bottom: 0.5px solid #E0E0E0;
+      padding: 40px 0 0;
+      margin-bottom: 0;
     }
-    .nav-logo { font-size: 14px; font-weight: 500; letter-spacing: 0.02em; }
-    .nav-links { display: flex; gap: 40px; }
-    .nav-links a { font-size: 13px; color: #6E6E6E; }
-    .nav-links a:hover { color: #111; }
+    .nav-logo {
+      font-family: var(--fd);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
 
+    /* ── HERO ── */
     .hero {
-      padding: 120px 64px 100px;
-      max-width: 1200px;
+      padding: 160px 0 140px;
     }
-    .hero-tag {
+    .hero-role {
       font-size: 12px;
-      color: #6B98B5;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: var(--muted);
       margin-bottom: 32px;
     }
-    .hero-name {
-      font-size: clamp(56px, 8vw, 96px);
+    .hero-h1 {
+      font-family: var(--fd);
       font-weight: 300;
+      font-size: clamp(48px, 9vw, 80px);
       line-height: 1.0;
       letter-spacing: -0.03em;
-      color: #111;
-      margin-bottom: 40px;
+      color: var(--ink);
+      margin-bottom: 48px;
     }
-    .hero-name span { color: #C0403A; }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--red);
+    }
     .hero-desc {
       font-size: 16px;
-      color: #6E6E6E;
-      max-width: 480px;
-      line-height: 1.7;
+      color: #666;
+      line-height: 1.85;
+      max-width: 460px;
       margin-bottom: 56px;
     }
     .hero-cta {
-      display: inline-block;
       font-size: 13px;
-      font-weight: 500;
-      color: #fff;
-      background: #111;
-      padding: 14px 32px;
-      letter-spacing: 0.04em;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: color .15s, border-color .15s;
     }
-    .hero-cta:hover { background: #C0403A; transition: background 0.2s; }
+    .hero-cta:hover { color: var(--red); border-color: var(--red); }
 
-    .section {
-      padding: 100px 64px;
-      border-top: 0.5px solid #E0E0E0;
+    /* ── SECTION ── */
+    section {
+      padding: 80px 0;
+      border-top: 0.5px solid var(--rule);
     }
-    .section-label {
+    .sec-label {
       font-size: 11px;
-      color: #999;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 56px;
+    }
+
+    /* ── WORKS ── */
+    .works { display: flex; flex-direction: column; }
+
+    .wrow {
+      display: grid;
+      grid-template-columns: 32px 1fr auto;
+      align-items: baseline;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 0.5px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: padding-left .2s;
+      position: relative;
+    }
+    .wrow:first-child { border-top: 0.5px solid var(--rule); }
+    .wrow::before {
+      content: '';
+      position: absolute;
+      left: -32px; top: 0; bottom: 0;
+      width: 0;
+      background: var(--red);
+      transition: width .2s;
+    }
+    .wrow:hover { padding-left: 8px; }
+    .wrow:hover::before { width: 2px; }
+    .wrow:hover .wtitle { color: var(--red); }
+
+    .wnum { font-size: 11px; color: var(--muted); }
+    .winfo { display: flex; flex-direction: column; gap: 4px; }
+    .wtag {
+      font-size: 10px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 64px;
+      color: #A0B8C8;
     }
-
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-    }
-    .work-card {
-      background: #F2F2F2;
-      padding: 56px 48px;
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .work-card:hover { background: #E8E8E8; }
-    .work-card.accent { background: #111; }
-    .work-card.accent:hover { background: #1A1A1A; }
-    .work-tag {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 16px;
-    }
-    .work-card.accent .work-tag { color: #6B98B5; }
-    .work-title {
-      font-size: 22px;
+    .wtitle {
+      font-family: var(--fd);
+      font-size: 18px;
       font-weight: 400;
-      color: #111;
       line-height: 1.3;
-      margin-bottom: 12px;
+      transition: color .2s;
     }
-    .work-card.accent .work-title { color: #fff; }
-    .work-year { font-size: 12px; color: #C8C8C8; }
+    .wyear { font-size: 12px; color: var(--muted); }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
+    /* ── ABOUT ── */
     .about-text {
       font-size: 16px;
-      color: #6E6E6E;
-      line-height: 1.8;
+      color: #555;
+      line-height: 1.9;
+      margin-bottom: 64px;
     }
-    .about-text strong { color: #111; font-weight: 500; }
-    .skills-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .skill-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 16px 0;
-      border-bottom: 0.5px solid #E0E0E0;
-      font-size: 13px;
-    }
-    .skill-name { color: #111; }
-    .skill-level { color: #6B98B5; }
+    .about-text strong { font-weight: 500; color: var(--ink); }
 
-    footer {
-      padding: 64px;
-      border-top: 0.5px solid #E0E0E0;
+    .skills { display: flex; flex-direction: column; }
+    .sk-head {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .sk-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    .footer-email {
+      padding: 14px 0;
+      border-bottom: 0.5px solid var(--rule);
       font-size: 13px;
-      color: #6E6E6E;
     }
-    .footer-links { display: flex; gap: 32px; }
-    .footer-links a {
+    .sk-row:first-of-type { border-top: 0.5px solid var(--rule); }
+    .sk-lvl { font-size: 11px; color: #A0B8C8; letter-spacing: 0.04em; }
+
+    /* ── CONTACT ── */
+    .contact-big {
+      font-family: var(--fd);
+      font-weight: 300;
+      font-size: clamp(28px, 5vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 40px;
+    }
+    .contact-big em { font-style: italic; color: var(--red); }
+
+    .contact-email {
+      font-family: var(--fd);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 4px;
+      transition: border-color .2s, color .2s;
+      display: inline-block;
+      margin-bottom: 64px;
+    }
+    .contact-email:hover { border-color: var(--red); color: var(--red); }
+
+    .contact-links { display: flex; gap: 28px; }
+    .contact-links a {
       font-size: 13px;
-      color: #6E6E6E;
+      color: var(--muted);
+      transition: color .15s;
     }
-    .footer-links a:hover { color: #C0403A; }
+    .contact-links a:hover { color: var(--ink); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 0 56px;
+      border-top: 0.5px solid var(--rule);
+      font-size: 12px;
+      color: var(--rule);
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="nav-logo">PD</div>
+    <span class="nav-logo">pd</span>
     <div class="nav-links">
-      <a href="#works">Работы</a>
-      <a href="#about">Обо мне</a>
-      <a href="#contact">Контакт</a>
+      <a href="#works">работы</a>
+      <a href="#about">обо мне</a>
+      <a href="#contact">контакт</a>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-tag">Product Designer</div>
-    <h1 class="hero-name">Polina<br><span>Dadasheva</span>
-    </h1>
+  <div class="hero">
+    <div class="hero-role">product designer</div>
+    <h1 class="hero-h1">polina<br><em>dadasheva</em></h1>
     <p class="hero-desc">Проектирую сложные продукты и строю дизайн-системы с нуля. Фокус на UX-логике, сценариях и системном мышлении.</p>
-    <a href="#works" class="hero-cta">Смотреть работы</a>
-  </section>
+    <a href="#works" class="hero-cta">смотреть работы</a>
+  </div>
 
-  <section class="section" id="works">
-    <div class="section-label">Работы</div>
-    <div class="works-grid">
-      <div class="work-card accent">
-        <div class="work-tag">UX · Web · Карьерный портал</div>
-        <div class="work-title">Карьерный портал РЭН — редизайн за 8 дней</div>
-        <div class="work-year">2024</div>
-      </div>
-      <div class="work-card">
-        <div class="work-tag">UI · Web · Культура</div>
-        <div class="work-title">OMAA — онлайн-музей абстракционизма</div>
-        <div class="work-year">2023</div>
-      </div>
-      <div class="work-card">
-        <div class="work-tag">UX · Mobile · Мероприятия</div>
-        <div class="work-title">Lazy — приложение для поиска событий</div>
-        <div class="work-year">2023</div>
-      </div>
-      <div class="work-card">
-        <div class="work-tag">Консультация · B2C · Энергетика</div>
-        <div class="work-title">Федеральное приложение ЖКХ — продуктовая консультация</div>
-        <div class="work-year">2024</div>
-      </div>
+  <section id="works">
+    <div class="sec-label">работы</div>
+    <div class="works">
+      <a class="wrow" href="#">
+        <span class="wnum">01</span>
+        <div class="winfo">
+          <span class="wtag">UX · Web · Карьерный портал</span>
+          <span class="wtitle">Карьерный портал РЭН — редизайн за 8 дней</span>
+        </div>
+        <span class="wyear">2024</span>
+      </a>
+      <a class="wrow" href="#">
+        <span class="wnum">02</span>
+        <div class="winfo">
+          <span class="wtag">UI · Web · Культура</span>
+          <span class="wtitle">OMAA — онлайн-музей абстракционизма</span>
+        </div>
+        <span class="wyear">2023</span>
+      </a>
+      <a class="wrow" href="#">
+        <span class="wnum">03</span>
+        <div class="winfo">
+          <span class="wtag">UX · Mobile · Мероприятия</span>
+          <span class="wtitle">Lazy — приложение для поиска событий</span>
+        </div>
+        <span class="wyear">2023</span>
+      </a>
+      <a class="wrow" href="#">
+        <span class="wnum">04</span>
+        <div class="winfo">
+          <span class="wtag">Консультация · B2C · Энергетика</span>
+          <span class="wtitle">Федеральное приложение ЖКХ — продуктовая консультация</span>
+        </div>
+        <span class="wyear">2024</span>
+      </a>
     </div>
   </section>
 
-  <section class="section" id="about">
-    <div class="section-label">Обо мне</div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>Product designer с фокусом на <strong>UX-логику и системное мышление</strong>. Работаю в энергетическом холдинге как единственный дизайнер — закрываю полный цикл от исследования до передачи в разработку.</p>
-        <br>
-        <p>Построила дизайн-систему с нуля. Веду несколько цифровых продуктов параллельно, включая <strong>консультацию федерального B2C-приложения</strong>.</p>
-        <br>
-        <p>Образование: культурология (бакалавр) + профессиональная переподготовка по UX/UI в Яндекс Практикуме.</p>
-      </div>
-      <div class="skills-list">
-        <div class="skill-item">
-          <span class="skill-name">Figma — Auto Layout, Variables, Components</span>
-          <span class="skill-level">Уверенно</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Дизайн-системы</span>
-          <span class="skill-level">Уверенно</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">UX-исследования и сценарии</span>
-          <span class="skill-level">Уверенно</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Web-интерфейсы</span>
-          <span class="skill-level">Уверенно</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Mobile (iOS/Android)</span>
-          <span class="skill-level">Есть опыт</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Управление подрядчиками</span>
-          <span class="skill-level">Есть опыт</span>
-        </div>
-      </div>
+  <section id="about">
+    <div class="sec-label">обо мне</div>
+    <div class="about-text">
+      <p>Product designer с фокусом на <strong>UX-логику и системное мышление</strong>. Работаю в энергетическом холдинге как единственный дизайнер — закрываю полный цикл от исследования до передачи в разработку.</p>
+      <br>
+      <p>Построила <strong>дизайн-систему с нуля</strong>. Веду несколько цифровых продуктов параллельно, включая консультацию <strong>федерального B2C-приложения</strong>.</p>
+      <br>
+      <p>Образование: культурология (бакалавр) + профессиональная переподготовка по UX/UI в Яндекс Практикуме.</p>
+    </div>
+    <div class="sk-head">навыки</div>
+    <div class="skills">
+      <div class="sk-row"><span>Figma — Auto Layout, Variables, Components</span><span class="sk-lvl">уверенно</span></div>
+      <div class="sk-row"><span>Дизайн-системы</span><span class="sk-lvl">уверенно</span></div>
+      <div class="sk-row"><span>UX-исследования и сценарии</span><span class="sk-lvl">уверенно</span></div>
+      <div class="sk-row"><span>Web-интерфейсы</span><span class="sk-lvl">уверенно</span></div>
+      <div class="sk-row"><span>Mobile (iOS / Android)</span><span class="sk-lvl">есть опыт</span></div>
+      <div class="sk-row"><span>Управление подрядчиками</span><span class="sk-lvl">есть опыт</span></div>
     </div>
   </section>
 
-  <footer id="contact">
-    <div class="footer-email">dadasheva.design@gmail.com</div>
-    <div class="footer-links">
+  <section id="contact">
+    <div class="sec-label">контакт</div>
+    <p class="contact-big">Хотите поговорить<br>о <em>проекте?</em></p>
+    <a href="mailto:dadasheva.design@gmail.com" class="contact-email">dadasheva.design@gmail.com</a>
+    <div class="contact-links">
       <a href="https://behance.net/polinadadasheva" target="_blank">Behance</a>
-      <a href="#">Telegram</a>
+      <a href="#" target="_blank">Telegram</a>
     </div>
-  </footer>
+  </section>
+
+  <footer>© 2024 polina dadasheva</footer>
 
 </body>
 </html>
