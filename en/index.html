@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polina — portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!--
+    Обрати внимание: путь "../style.css" — это значит "файл стилей лежит
+    на ОДИН уровень выше, в папке portfolio-site". Эта страница лежит
+    в подпапке en/, поэтому "../" означает "выйти из этой папки наружу".
+  -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__logo">pd</div>
+
+    <nav class="nav__menu">
+      <!--
+        Перевод пунктов меню сделан по смыслу русской версии
+        (работы → works, обо мне → about, контакт → contact).
+        Если в макете другие слова — просто поменяй текст внутри тегов <a>.
+      -->
+      <a href="#screen-works" class="nav__link">cases</a>
+      <a href="#screen-about" class="nav__link">about</a>
+      <a href="#screen-contact" class="nav__link">contact</a>
+
+      <!-- Ссылка обратно на русскую версию: "../" — выйти из папки en/ -->
+      <a class="nav__lang" href="../index.html" aria-label="Переключить на русский">
+        en
+        <svg class="nav__lang-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.1046 8H7.89541C7.72924 7.99978 7.56639 8.0418 7.42572 8.12118C7.28506 8.20057 7.17232 8.31408 7.10056 8.44857C7.01656 8.60814 6.98421 8.78568 7.00719 8.96095C7.03017 9.13622 7.10756 9.30217 7.23054 9.4399L9.33513 11.7276C9.41772 11.8131 9.51983 11.8817 9.63455 11.9287C9.74926 11.9757 9.87389 12 10 12C10.1261 12 10.2507 11.9757 10.3655 11.9287C10.4802 11.8817 10.5823 11.8131 10.6649 11.7276L12.7695 9.4399C12.8924 9.30217 12.9698 9.13622 12.9928 8.96095C13.0158 8.78568 12.9834 8.60814 12.8994 8.44857C12.8277 8.31408 12.7149 8.20057 12.5743 8.12118C12.4336 8.0418 12.2708 7.99978 12.1046 8Z" fill="#FF4800"/>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <main class="scroll-area" id="scrollArea">
+
+    <!-- ---------- ЭКРАН 1: HERO (английская версия) ---------- -->
+    <section class="screen screen--hero" id="screen-hero">
+      <div class="hero__row hero__row--en">
+
+        <h1 class="hero__title hero__title--en">
+          from<br>
+          chaos<br>
+          to
+          <span class="hero__photo-wrap">
+            <img src="../images/hero-photo.png" alt="" class="hero__photo">
+          </span>
+          <br>
+          <span class="hero__title-accent">flow</span>
+        </h1>
+
+        <p class="hero__subtitle hero__subtitle--en">
+          Polina.<br>
+          Designing digital products.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Дальше будут остальные экраны английской версии — добавим, когда дойдём до них -->
+
+  </main>
+
+  <!-- Скрипт общий с русской версией, поэтому путь тоже с "../" -->
+  <script src="../script.js"></script>
+</body>
+</html>
