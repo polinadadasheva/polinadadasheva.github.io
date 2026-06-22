@@ -3,405 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polina Dadasheva — Product Designer</title>
+  <title>Полина — портфолио</title>
+
+  <!--
+    Подключаем шрифт Ubuntu с сервиса Google Fonts.
+    Это просто значит: браузер сам скачает нужный шрифт с сервера Google,
+    тебе для этого ничего делать не нужно, это просто две строчки-ссылки.
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&family=Ubuntu+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Ubuntu Sans', sans-serif; background: #fff; color: #131313; }
-    a { color: inherit; text-decoration: none; }
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 33px 64px;
-      position: sticky;
-      top: 0;
-      background: #fff;
-      z-index: 10;
-    }
-    .nav-logo {
-      font-family: 'Ubuntu', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      letter-spacing: 0.13px;
-      color: #131313;
-    }
-    .nav-links { display: flex; gap: 40px; }
-    .nav-links a {
-      font-size: 16px;
-      font-weight: 400;
-      color: #6E6E6E;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: #131313; }
-
-    .hero {
-      padding: 54px 64px 96px;
-    }
-    .hero-body {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      grid-template-rows: auto auto auto;
-      column-gap: 48px;
-      row-gap: 0;
-      align-items: start;
-    }
-    .hero-photo {
-      grid-column: 1;
-      grid-row: 1 / 4;
-      align-self: center;
-      width: 176px;
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 176 / 220;
-    }
-    .hero-content { display: contents; }
-    .hero-tag {
-      grid-column: 2;
-      grid-row: 1;
-      font-size: 14px;
-      font-weight: 400;
-      color: #6B98B5;
-      letter-spacing: 0.96px;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-    .hero-name {
-      grid-column: 2;
-      grid-row: 2;
-      display: block;
-      width: 100%;
-      max-width: 853px;
-      height: auto;
-      margin-bottom: 24px;
-    }
-    .hero-desc {
-      grid-column: 2;
-      grid-row: 3;
-      max-width: 459px;
-      padding: 10px;
-      font-size: 16px;
-      font-weight: 400;
-      color: #6E6E6E;
-      line-height: 26px;
-    }
-    .hero-cta {
-      grid-column: 3;
-      grid-row: 2;
-      align-self: center;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-width: 239px;
-      min-height: 52px;
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: 400;
-      color: #fff;
-      background: #E9AD9F;
-      transition: background 0.2s;
-    }
-    .hero-cta:hover { background: #e09a8a; }
-
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    @media (max-width: 960px) {
-      nav { padding: 24px 32px; }
-      .hero { padding: 40px 32px 64px; }
-      .hero-body {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-      }
-      .hero-photo {
-        grid-column: 1;
-        grid-row: auto;
-        width: 140px;
-        margin-bottom: 24px;
-      }
-      .hero-tag,
-      .hero-name,
-      .hero-desc,
-      .hero-cta {
-        grid-column: 1;
-        grid-row: auto;
-      }
-      .hero-cta { width: 100%; margin-top: 8px; }
-    }
-
-    .section {
-      padding: 100px 64px;
-      border-top: 0.5px solid #E0E0E0;
-    }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 64px;
-    }
-    .section-label {
-      font-size: 11px;
-      color: #999;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .section-count { font-size: 11px; color: #C8C8C8; }
-
-    .works-scroll {
-      display: flex;
-      gap: 2px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      cursor: grab;
-      margin: 0 -64px;
-      padding: 0 64px;
-    }
-    .works-scroll::-webkit-scrollbar { display: none; }
-    .works-scroll:active { cursor: grabbing; }
-
-    .work-card {
-      background: #F2F2F2;
-      padding: 56px 48px;
-      min-width: 420px;
-      min-height: 360px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-shrink: 0;
-      transition: background 0.2s;
-    }
-    .work-card:hover { background: #E8E8E8; }
-    .work-card.dark { background: #111; }
-    .work-card.dark:hover { background: #1A1A1A; }
-
-    .work-number { font-size: 11px; color: #C8C8C8; }
-    .work-card.dark .work-number { color: #444; }
-
-    .work-bottom { display: flex; flex-direction: column; gap: 12px; }
-    .work-tag {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #999;
-    }
-    .work-card.dark .work-tag { color: #6B98B5; }
-    .work-title {
-      font-family: 'Ubuntu', serif;
-      font-size: 20px;
-      font-weight: 300;
-      color: #111;
-      line-height: 1.3;
-    }
-    .work-card.dark .work-title { color: #fff; }
-    .work-arrow {
-      font-size: 20px;
-      color: #C0403A;
-      align-self: flex-end;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 120px;
-      align-items: start;
-    }
-    .about-name {
-      font-family: 'Ubuntu', serif;
-      font-size: clamp(48px, 6vw, 80px);
-      font-weight: 300;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      color: #111;
-      margin-bottom: 48px;
-    }
-    .about-text {
-      font-size: 15px;
-      color: #6E6E6E;
-      line-height: 1.9;
-    }
-    .about-text strong { color: #111; font-weight: 500; }
-    .skills-list { display: flex; flex-direction: column; }
-    .skill-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 16px 0;
-      border-bottom: 0.5px solid #E0E0E0;
-      font-size: 13px;
-    }
-    .skill-name { color: #111; }
-    .skill-level { color: #6B98B5; }
-
-    footer {
-      padding: 64px;
-      border-top: 0.5px solid #E0E0E0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .footer-left { display: flex; flex-direction: column; gap: 8px; }
-    .footer-big {
-      font-family: 'Ubuntu', serif;
-      font-size: clamp(32px, 4vw, 56px);
-      font-weight: 300;
-      color: #111;
-    }
-    .footer-big span { color: #C0403A; }
-    .footer-email { font-size: 13px; color: #6E6E6E; }
-    .footer-links { display: flex; gap: 32px; }
-    .footer-links a { font-size: 13px; color: #6E6E6E; }
-    .footer-links a:hover { color: #C0403A; }
-  </style>
+  <!-- Подключаем файл со стилями (там вся "красота": цвета, отступы, размеры) -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <nav>
-    <div class="nav-logo">pd</div>
-    <div class="nav-links">
-      <a href="#works">Работы</a>
-      <a href="#about">Обо мне</a>
-      <a href="#contact">Контакт</a>
-    </div>
-  </nav>
+  <!-- =========================================================
+       ШАПКА САЙТА (навигация)
+       Она находится в обычном вертикальном потоке страницы,
+       НЕ внутри блока с горизонтальной прокруткой — поэтому
+       при прокрутке экранов влево-вправо шапка остаётся
+       на месте и никуда не убегает.
+  ========================================================== -->
+  <header class="nav">
+    <div class="nav__logo">pd</div>
 
-  <section class="hero">
-    <div class="hero-body">
-      <img class="hero-photo" src="assets/hero-photo.jpg" alt="Polina Dadasheva">
-      <div class="hero-content">
-        <p class="hero-tag">Product Designer</p>
-        <h1 class="visually-hidden">polina dadasheva</h1>
-        <img class="hero-name" src="assets/intersect.svg" alt="" width="853" height="110">
-        <p class="hero-desc">Проектирую сложные продукты и строю дизайн-системы с нуля. Фокус на UX-логике, сценариях и системном мышлении.</p>
-      </div>
-      <a href="#works" class="hero-cta">Смотреть работы <span aria-hidden="true">&gt;</span></a>
-    </div>
-  </section>
+    <nav class="nav__menu">
+      <a href="#screen-works" class="nav__link">работы</a>
+      <a href="#screen-about" class="nav__link">обо мне</a>
+      <a href="#screen-contact" class="nav__link">контакт</a>
 
-  <section class="section" id="works">
-    <div class="section-header">
-      <div class="section-label">Работы</div>
-      <div class="section-count">06</div>
-    </div>
-    <div class="works-scroll">
-      <div class="work-card dark">
-        <div class="work-number">01</div>
-        <div class="work-bottom">
-          <div class="work-tag">UX · Web · Карьерный портал</div>
-          <div class="work-title">Карьерный портал РЭН — редизайн за 8 дней</div>
-          <div class="work-arrow">→</div>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-number">02</div>
-        <div class="work-bottom">
-          <div class="work-tag">Дизайн-система · Web</div>
-          <div class="work-title">Корпоративный портал — дизайн-система с нуля</div>
-          <div class="work-arrow">→</div>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-number">03</div>
-        <div class="work-bottom">
-          <div class="work-tag">UI · Web · Культура</div>
-          <div class="work-title">OMAA — онлайн-музей абстракционизма</div>
-          <div class="work-arrow">→</div>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-number">04</div>
-        <div class="work-bottom">
-          <div class="work-tag">UX · Mobile · Мероприятия</div>
-          <div class="work-title">Lazy — приложение для поиска событий</div>
-          <div class="work-arrow">→</div>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-number">05</div>
-        <div class="work-bottom">
-          <div class="work-tag">Консультация · B2C · Энергетика</div>
-          <div class="work-title">Федеральное приложение ЖКХ</div>
-          <div class="work-arrow">→</div>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-number">06</div>
-        <div class="work-bottom">
-          <div class="work-tag">Web · Лендинг · Энергетика</div>
-          <div class="work-title">Лендинг Мосэнерго — в процессе</div>
-          <div class="work-arrow">→</div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!--
+        Переключатель языка. Сейчас это просто кнопка-заглушка.
+        Когда будем делать англоязычную версию (тот самый фрейм
+        "ubuntu eng" из Figma) — сюда добавим переход на неё.
+      -->
+      <button class="nav__lang" id="langSwitch" type="button" aria-label="Сменить язык">
+        ru
+        <svg class="nav__lang-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12L10 7L15 12" stroke="#FF4800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
 
-  <section class="section" id="about">
-    <div class="section-header">
-      <div class="section-label">Обо мне</div>
-    </div>
-    <div class="about-grid">
-      <div>
-        <div class="about-name">product<br>designer</div>
-        <p class="about-text">Работаю в энергетическом холдинге как единственный дизайнер — закрываю полный цикл от исследования до передачи в разработку.<br><br>Построила <strong>дизайн-систему с нуля</strong>. Веду несколько цифровых продуктов параллельно, включая консультацию федерального B2C-приложения.<br><br>Образование: культурология + UX/UI в Яндекс Практикуме.</p>
-      </div>
-      <div class="skills-list">
-        <div class="skill-item">
-          <span class="skill-name">Figma — Auto Layout, Variables, Components</span>
-          <span class="skill-level">уверенно</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Дизайн-системы</span>
-          <span class="skill-level">уверенно</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">UX-исследования и сценарии</span>
-          <span class="skill-level">уверенно</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Web-интерфейсы</span>
-          <span class="skill-level">уверенно</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Mobile (iOS/Android)</span>
-          <span class="skill-level">есть опыт</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Управление подрядчиками</span>
-          <span class="skill-level">есть опыт</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- =========================================================
+       ОБЛАСТЬ С ГОРИЗОНТАЛЬНОЙ ПРОКРУТКОЙ
+       Внутри этого блока "экраны" (секции) стоят в ряд по горизонтали,
+       как вагоны поезда. Файл script.js делает так, что обычное
+       прокручивание колесиком мыши/свайп пальцем вниз двигает
+       этот ряд влево-вправо, а не вверх-вниз.
+  ========================================================== -->
+  <main class="scroll-area" id="scrollArea">
 
-  <footer id="contact">
-    <div class="footer-left">
-      <div class="footer-big">давай <span>поговорим</span></div>
-      <div class="footer-email">dadasheva.design@gmail.com</div>
-    </div>
-    <div class="footer-links">
-      <a href="https://behance.net/polinadadasheva" target="_blank">Behance</a>
-      <a href="#">Telegram</a>
-    </div>
-  </footer>
+    <!-- ---------- ЭКРАН 1: ГЛАВНЫЙ ЭКРАН (HERO) ---------- -->
+    <section class="screen screen--hero" id="screen-hero">
 
-  <script>
-    const scroll = document.querySelector('.works-scroll');
-    let isDown = false, startX, scrollLeft;
-    scroll.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; });
-    scroll.addEventListener('mouseleave', () => isDown = false);
-    scroll.addEventListener('mouseup', () => isDown = false);
-    scroll.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - scroll.offsetLeft; scroll.scrollLeft = scrollLeft - (x - startX) * 1.5; });
-  </script>
+      <h1 class="hero__title">
+        из<br>
+        хаоса<br>
+        в
+        <!--
+          Маленькая фотография-вставка рядом со словом "в".
+          ВАЖНО: сейчас файла картинки еще нет, нужно его добавить.
+          1. Открой нужный фрейм в Figma
+          2. Кликни правой кнопкой на эту маленькую фотографию
+          3. Export → PNG → Export
+          4. Положи скачанный файл в папку images и назови его hero-photo.png
+        -->
+        <span class="hero__photo-wrap">
+          <img src="images/hero-photo.png" alt="" class="hero__photo">
+        </span>
+        <br>
+        <span class="hero__title-accent">систему</span>
+      </h1>
 
+      <p class="hero__subtitle">
+        Полина.<br>
+        Проектирую цифровые продукты
+      </p>
+
+    </section>
+
+    <!--
+      Дальше будут следующие экраны: "работы", "обо мне", "контакт".
+      Добавим их следующими шагами, по одному экрану за раз —
+      присылай следующий фрейм из Figma, когда будешь готова.
+    -->
+
+  </main>
+
+  <!-- Подключаем файл с "поведением" страницы (горизонтальный скролл и т.д.) -->
+  <script src="script.js"></script>
 </body>
 </html>
