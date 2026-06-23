@@ -60,31 +60,34 @@
     <!-- ---------- ЭКРАН 1: ГЛАВНЫЙ ЭКРАН (HERO) ---------- -->
     <section class="screen screen--hero" id="screen-hero">
       <div class="hero__row">
+        <div class="hero__row-inner">
 
-        <h1 class="hero__title">
-          из<br>
-          хаоса<br>
-          в
-          <!--
-            Маленькая фотография-вставка рядом со словом "в".
-            ВАЖНО: сейчас файла картинки еще нет, нужно его добавить.
-            1. Открой нужный фрейм в Figma
-            2. Кликни правой кнопкой на эту маленькую фотографию
-            3. Export → PNG → Export
-            4. Положи скачанный файл в папку images и назови его hero-photo.png
-          -->
-          <span class="hero__photo-wrap">
-            <img src="images/hero-photo.png" alt="" class="hero__photo">
-          </span>
-          <br>
-          <span class="hero__title-accent">систему</span>
-        </h1>
+          <h1 class="hero__title">
+            из<br>
+            хаоса<br>
+            <!--
+              Строка с фото — отдельный flex-блок, чтобы фото точно
+              вставало по центру высоты именно этой строки.
+              ВАЖНО: сейчас файла картинки еще нет, нужно его добавить.
+              1. Открой нужный фрейм в Figma
+              2. Кликни правой кнопкой на эту маленькую фотографию
+              3. Export → PNG → Export
+              4. Положи скачанный файл в папку images и назови его hero-photo.png
+            -->
+            <span class="hero__line--with-photo">
+              в
+              <img src="images/hero-photo.png" alt="" class="hero__photo">
+            </span>
+            <br>
+            <span class="hero__title-accent">систему</span>
+          </h1>
 
-        <p class="hero__subtitle">
-          Полина.<br>
-          Проектирую цифровые продукты
-        </p>
+          <p class="hero__subtitle">
+            Полина.<br>
+            Проектирую цифровые продукты
+          </p>
 
+        </div>
       </div>
     </section>
 
